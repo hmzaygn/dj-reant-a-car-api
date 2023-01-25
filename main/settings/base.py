@@ -17,6 +17,12 @@ INSTALLED_APPS = [
     #3rd Party Apps
     "rest_framework",
     'drf_yasg',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+
+    # my apps
+    "users",
+    "rentcar",
 ]
 
 MIDDLEWARE = [
@@ -122,4 +128,14 @@ LOGGING = {
             # will not be handled by the django logger. 
         }, 
     }, 
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer',
 }
